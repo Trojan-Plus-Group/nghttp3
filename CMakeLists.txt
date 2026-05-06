@@ -64,8 +64,10 @@ foreach(_build_type "Release" "MinSizeRel" "RelWithDebInfo")
   endforeach()
 endforeach()
 
-enable_testing()
-add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
+if(BUILD_TESTING)
+  enable_testing()
+  add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
+endif()
 
 # Checks for header files.
 include(CheckIncludeFile)
